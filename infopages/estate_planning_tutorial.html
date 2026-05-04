@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estate Planning: A Friend's Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --slate: #4a5568;
+    --light-gold: #f0e6c8;
+    --warm-white: #faf8f4;
+    --red: #8b2635;
+    --green: #2d5a3d;
+    --muted: #7a7265;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--navy);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* Navigation */
+  #nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navy);
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  #nav-title {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  #nav-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  #slide-counter {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 16px;
+    cursor: pointer;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .nav-btn:hover { background: var(--gold); color: var(--navy); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn:disabled:hover { background: transparent; color: var(--gold); }
+
+  /* Slide container */
+  #slide-container {
+    margin-top: 56px;
+    min-height: calc(100vh - 56px);
+    display: flex;
+    align-items: stretch;
+  }
+
+  .slide {
+    display: none;
+    width: 100%;
+    min-height: calc(100vh - 56px);
+  }
+  .slide.active { display: flex; }
+
+  /* Slide layouts */
+  .slide-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-inner::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--gold);
+  }
+
+  /* Title slide */
+  .slide-title .slide-inner {
+    background: var(--navy);
+    color: var(--cream);
+    align-items: center;
+    text-align: center;
+  }
+  .slide-title .slide-inner::before { display: none; }
+
+  .title-ornament {
+    color: var(--gold);
+    font-size: 28px;
+    margin-bottom: 24px;
+    letter-spacing: 0.3em;
+  }
+
+  .slide-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .slide-title h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .slide-title .subtitle {
+    color: var(--light-gold);
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 48px;
+  }
+
+  .title-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+  }
+
+  /* Disclaimer box */
+  .disclaimer-box {
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 20px 28px;
+    max-width: 720px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .disclaimer-box .disclaimer-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .disclaimer-box p {
+    color: var(--cream);
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .disclaimer-box strong { color: var(--gold); }
+
+  /* Section header slides */
+  .slide-section .slide-inner {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .slide-section .slide-inner::before { background: var(--gold); }
+
+  .section-number {
+    color: var(--gold);
+    font-size: 72px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.4;
+  }
+
+  .section-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .slide-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--cream);
+    line-height: 1.2;
+    max-width: 600px;
+  }
+
+  .section-desc {
+    color: var(--light-gold);
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 540px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Content slides */
+  .slide-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  h2.slide-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 32px;
+    line-height: 1.3;
+  }
+
+  h2.slide-heading em { color: var(--red); font-style: italic; }
+
+  /* Two column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 8px;
+  }
+
+  .col-card {
+    background: var(--cream);
+    border: 1px solid #ddd4bb;
+    padding: 24px 28px;
+    position: relative;
+  }
+
+  .col-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .col-card.danger::before { background: var(--red); }
+  .col-card.safe::before { background: var(--green); }
+  .col-card.neutral::before { background: var(--gold); }
+  .col-card.info::before { background: var(--slate); }
+
+  .col-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: var(--navy);
+  }
+
+  .col-card.danger h3 { color: var(--red); }
+  .col-card.safe h3 { color: var(--green); }
+
+  /* Lists */
+  ul.point-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  ul.point-list li {
+    padding-left: 20px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  ul.point-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 3px;
+  }
+
+  ul.point-list li strong { color: var(--navy); }
+  ul.point-list li.urgent { color: var(--red); }
+  ul.point-list li.urgent strong { color: var(--red); }
+
+  /* Scenario story cards */
+  .scenario-card {
+    background: var(--cream);
+    border-left: 4px solid var(--red);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .scenario-card.alt { border-left-color: var(--green); }
+  .scenario-card.neutral-card { border-left-color: var(--gold); }
+
+  .scenario-card .sc-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .scenario-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .scenario-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--slate);
+  }
+
+  .scenario-card .outcome {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd4bb;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .outcome strong { color: var(--green); font-style: normal; }
+  .outcome strong.bad { color: var(--red); }
+
+  /* Info boxes */
+  .info-box {
+    background: var(--light-gold);
+    border: 1px solid #d4b87a;
+    padding: 16px 22px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+
+  .info-box strong { color: var(--red); }
+
+  /* Three column grid */
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .mini-card {
+    background: var(--cream);
+    border: 1px solid #ddd4bb;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .mini-card .icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .mini-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .mini-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  /* Questions list */
+  .q-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .q-list li {
+    background: var(--cream);
+    border: 1px solid #ddd4bb;
+    border-left: 3px solid var(--navy);
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  .q-list li strong {
+    display: block;
+    color: var(--navy);
+    font-size: 13px;
+    margin-bottom: 3px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Next steps */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .step-card {
+    background: var(--cream);
+    border: 1px solid #ddd4bb;
+    padding: 22px 26px;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--gold);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .step-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .step-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  /* Final slide */
+  .slide-final .slide-inner {
+    background: var(--navy);
+    color: var(--cream);
+    align-items: center;
+    text-align: center;
+  }
+  .slide-final .slide-inner::before { display: none; }
+
+  .slide-final h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .slide-final h2 em { color: var(--gold); }
+
+  .slide-final p {
+    color: var(--light-gold);
+    font-size: 16px;
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .final-tagline {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Table of contents slide */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--cream);
+    border: 1px solid #ddd4bb;
+  }
+
+  .toc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .toc-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .toc-text p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Slide number badge */
+  .slide-badge {
+    position: absolute;
+    top: 28px;
+    right: 80px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .slide-inner { padding: 40px 28px; }
+    .slide-title h1 { font-size: 32px; }
+    .two-col, .three-col, .toc-grid, .steps-grid { grid-template-columns: 1fr; }
+    h2.slide-heading { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="nav-title">Estate Planning: A Friend's Guide</div>
+  <div id="nav-controls">
+    <button class="nav-btn" id="prev-btn" onclick="changeSlide(-1)">← Prev</button>
+    <div id="slide-counter">1 / 18</div>
+    <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">Next →</button>
+  </div>
+</div>
+
+<div id="slide-container">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide slide-title active">
+    <div class="slide-inner">
+      <div class="title-ornament">⚖ ✦ ⚖</div>
+      <h1>Estate Planning<br><em>A Friend's Guide</em></h1>
+      <div class="subtitle">Understanding Your Options &amp; Protecting What Matters</div>
+      <div class="title-divider"></div>
+      <div class="disclaimer-box">
+        <div class="disclaimer-label">⚠ Important Disclaimer</div>
+        <p>This presentation is for <strong>educational purposes only</strong> and does not constitute legal advice. The person sharing this material is <strong>not available to serve as agent, trustee, or legal representative</strong> in any capacity at this time. All decisions should be made in consultation with a licensed attorney. California law applies; other states may differ.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Table of Contents -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Overview</div>
+      <div class="slide-label">What We'll Cover</div>
+      <h2 class="slide-heading">A Roadmap for Today</h2>
+      <div class="toc-grid">
+        <div class="toc-item">
+          <div class="toc-num">1</div>
+          <div class="toc-text">
+            <h4>Why This Matters Now</h4>
+            <p>The cost of doing nothing — and why timing is everything</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">2</div>
+          <div class="toc-text">
+            <h4>The Urgent Documents</h4>
+            <p>What you need regardless of any other decision</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">3</div>
+          <div class="toc-text">
+            <h4>Scenarios: What Could Go Wrong</h4>
+            <p>Real stories about incapacity, debt, and dying without a plan</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">4</div>
+          <div class="toc-text">
+            <h4>The Marriage Question</h4>
+            <p>How your current legal status shapes every option</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">5</div>
+          <div class="toc-text">
+            <h4>Your Options Landscape</h4>
+            <p>Stay married, legal separation, or divorce — the real differences</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">6</div>
+          <div class="toc-text">
+            <h4>Designing Your Estate Plan</h4>
+            <p>What a tailored plan could look like for your situation</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">7</div>
+          <div class="toc-text">
+            <h4>Before the Attorney</h4>
+            <p>How to prepare — and why your legal benefit is valuable</p>
+          </div>
+        </div>
+        <div class="toc-item">
+          <div class="toc-num">8</div>
+          <div class="toc-text">
+            <h4>Next Steps</h4>
+            <p>A concrete, low-overwhelm action plan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Section 1 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">1</div>
+      <div class="section-label">Section One</div>
+      <h2>Why This Matters <em style="color:var(--gold)">Now</em></h2>
+      <p class="section-desc">The cost of inaction compounds quietly. Here's what's actually at stake — and why the timing of your life situation makes this the right moment.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Why now -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 1</div>
+      <div class="slide-label">The Urgency Case</div>
+      <h2 class="slide-heading">The Math Is Changing</h2>
+      <div class="two-col">
+        <div class="col-card danger">
+          <h3>What's Different Now</h3>
+          <ul class="point-list">
+            <li><strong>Children are adults</strong> — the reason to maintain the status quo is largely past</li>
+            <li><strong>Retirement is near</strong> — asset decisions made now lock in outcomes for decades</li>
+            <li><strong>Health events become more likely</strong> — each year without documents is a year of exposure</li>
+            <li><strong>Every year married</strong> = more community property accumulating</li>
+          </ul>
+        </div>
+        <div class="col-card safe">
+          <h3>What's in Your Favor</h3>
+          <ul class="point-list">
+            <li><strong>Strong employment history</strong> — not coming from financial weakness</li>
+            <li><strong>Civil relationship</strong> — settlement without litigation is realistic</li>
+            <li><strong>Employer legal benefit</strong> — you may have access to attorneys at low or no cost</li>
+            <li><strong>Time to act thoughtfully</strong> — this is a planned decision, not a crisis response</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-box">
+        <strong>Key insight:</strong> "Doing nothing" is itself a decision — one that keeps default legal rules in place that may not reflect your wishes at all.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Section 2 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">2</div>
+      <div class="section-label">Section Two</div>
+      <h2>The Documents You Need <em style="color:var(--gold)">Right Now</em></h2>
+      <p class="section-desc">These three documents can be created immediately, without your spouse's involvement or consent, and they fix your most urgent legal vulnerabilities.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Urgent documents -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 2</div>
+      <div class="slide-label">Phase 1 — Do This Now</div>
+      <h2 class="slide-heading">The Three <em>Urgent</em> Documents</h2>
+      <div class="three-col">
+        <div class="mini-card">
+          <div class="icon">🏥</div>
+          <h3>Advance Healthcare Directive</h3>
+          <p>Names who makes medical decisions if you're incapacitated. <strong>Right now, your spouse is first in line by default.</strong> You can name anyone — a son, sibling, or trusted friend.</p>
+        </div>
+        <div class="mini-card">
+          <div class="icon">💼</div>
+          <h3>Durable Power of Attorney</h3>
+          <p>Names who handles your finances if you cannot. Without this, accounts can freeze, bills go unpaid, and the legal process to get access is slow and expensive.</p>
+        </div>
+        <div class="mini-card">
+          <div class="icon">📜</div>
+          <h3>Will + Beneficiary Updates</h3>
+          <p>A will directs your separate property. Updating retirement account and life insurance beneficiary designations is often even more powerful — these pass outside probate entirely.</p>
+        </div>
+      </div>
+      <div class="info-box">
+        ⚡ <strong>Important timing note:</strong> Once divorce papers are filed, Automatic Temporary Restraining Orders (ATROs) freeze certain actions — including changing beneficiary designations. <strong>Update beneficiaries before filing.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Section 3 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">3</div>
+      <div class="section-label">Section Three</div>
+      <h2>What Could Go <em style="color:var(--gold)">Wrong</em></h2>
+      <p class="section-desc">These are general illustrative scenarios — not predictions. They show how the absence of planning creates real vulnerability across common life events.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Scenarios part 1 -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 3</div>
+      <div class="slide-label">Illustrative Scenarios</div>
+      <h2 class="slide-heading">Incapacity &amp; Death — Without a Plan</h2>
+      <div class="scenario-card">
+        <div class="sc-label">Scenario A — Medical Emergency</div>
+        <h3>"The Stroke at 61"</h3>
+        <p>You're incapacitated for six weeks. Your spouse — first in line by default law — makes healthcare decisions. Your adult son, who you actually trust, stands in the hallway with no legal authority. Your accounts freeze. Bills go unpaid. The IRS doesn't care that you're in a hospital.</p>
+        <div class="outcome"><strong class="bad">Without documents:</strong> Wrong person in control, financial chaos, months of untangling after recovery.</div>
+      </div>
+      <div class="scenario-card alt">
+        <div class="sc-label">With Healthcare Directive &amp; POA</div>
+        <h3>Same Emergency — Different Outcome</h3>
+        <p>Your named agent steps in immediately. Bills get paid. Medical decisions reflect your actual wishes. Your spouse is informed but not in control.</p>
+        <div class="outcome"><strong>With documents:</strong> Crisis managed. Your wishes honored. Recovery without added chaos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Scenarios part 2 -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 3</div>
+      <div class="slide-label">Illustrative Scenarios</div>
+      <h2 class="slide-heading">Debt &amp; Long-Term Care Risks</h2>
+      <div class="scenario-card">
+        <div class="sc-label">Scenario B — Spouse's Financial Implosion</div>
+        <h3>"The $45,000 Credit Card Problem"</h3>
+        <p>Your spouse, between jobs, runs up significant debt. In California, debts incurred during marriage are generally community debts. The creditor comes after community property assets — including your income and the house you were planning to sell. A lien appears. Your retirement move is frozen.</p>
+        <div class="outcome"><strong class="bad">Still married:</strong> His financial decisions are your financial exposure.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-label">Scenario C — Long-Term Care in Your 70s</div>
+        <h3>"The Memory Care Bill"</h3>
+        <p>You never divorced. At 71, your spouse requires memory care at $8,000–$12,000/month. Medi-Cal rules for married couples consider the community's assets. The house and shared assets are in scope. Your retirement nest egg is at risk.</p>
+        <div class="outcome"><strong class="bad">Still married:</strong> His care costs can reach your assets. <strong>After divorce:</strong> His costs are his problem entirely.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Section 4 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">4</div>
+      <div class="section-label">Section Four</div>
+      <h2>The Marriage Question</h2>
+      <p class="section-desc">California's community property framework means your legal marital status — not your emotional reality — shapes your financial exposure. Here's what that means in practice.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Marriage landscape -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 4</div>
+      <div class="slide-label">California Community Property</div>
+      <h2 class="slide-heading">What "Still Married" Means <em>Legally</em></h2>
+      <div class="two-col">
+        <div>
+          <ul class="point-list">
+            <li><strong>Community property:</strong> Assets &amp; debts acquired during marriage are owned 50/50</li>
+            <li><strong>Separate property:</strong> Assets brought in, inherited, or gifted — kept separate</li>
+            <li><strong>Commingling risk:</strong> 25 years of mixing separate and community funds makes tracing hard</li>
+            <li><strong>Retirement accounts:</strong> Amounts contributed during marriage are community property — requires a QDRO to divide at divorce</li>
+            <li><strong>RSUs/Stock comp:</strong> Vested during marriage = community property</li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-card neutral">
+            <h3>The "Roommate Marriage" Reality Check</h3>
+            <ul class="point-list">
+              <li>Inertia has a cost: community property keeps accumulating</li>
+              <li>Default legal rules assume a traditional marriage — they don't know your actual relationship</li>
+              <li>His financial instability is your legal exposure, indefinitely</li>
+              <li>Long-term care liability grows as both of you age</li>
+              <li><strong>BUT:</strong> a negotiated settlement while both are healthy is far better than resolving during a health crisis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Section 5 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">5</div>
+      <div class="section-label">Section Five</div>
+      <h2>Your Options <em style="color:var(--gold)">Landscape</em></h2>
+      <p class="section-desc">There are more options than "stay married" or "get divorced." Understanding the full menu allows you to make an intentional choice rather than living with the default.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: Options -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 5</div>
+      <div class="slide-label">The Full Menu</div>
+      <h2 class="slide-heading">Three Legal Paths — Real Differences</h2>
+      <div class="three-col">
+        <div class="mini-card">
+          <div class="icon">🔄</div>
+          <h3>Stay Married</h3>
+          <p>Status quo continues. Community property accumulates. Exposure to spouse's debts and health costs continues. <em>Can be made safer</em> with robust estate documents and a financial transparency agreement.</p>
+        </div>
+        <div class="mini-card">
+          <div class="icon">⚖️</div>
+          <h3>Legal Separation</h3>
+          <p>Stops community property accumulation from the separation date. New debts become separate. Marriage legally continues — useful if health insurance or other marriage-dependent benefits matter. Less common but underused.</p>
+        </div>
+        <div class="mini-card">
+          <div class="icon">📋</div>
+          <h3>Divorce</h3>
+          <p>Clean legal break. Assets divided by agreement or court. Eliminates ongoing debt and care exposure. <strong>In California, one spouse cannot block it.</strong> Minimum 6-month timeline after filing.</p>
+        </div>
+      </div>
+      <div class="info-box">
+        💡 <strong>Often overlooked:</strong> You can divorce AND continue living together by agreement — with clear, enforceable terms about the house, costs, and how either party can exit the arrangement. This is legally straightforward and may actually give <em>both</em> parties more clarity than the current undefined situation.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: Section 6 header -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">6</div>
+      <div class="section-label">Section Six</div>
+      <h2>Designing Your <em style="color:var(--gold)">Estate Plan</em></h2>
+      <p class="section-desc">What a thoughtfully tailored plan might look like — built around your actual situation, not generic assumptions about "married couples."</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Estate plan design -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 6</div>
+      <div class="slide-label">A Possible Framework</div>
+      <h2 class="slide-heading">Your Estate Plan: A Proposed Design</h2>
+      <div class="two-col">
+        <div>
+          <div class="col-card safe">
+            <h3>Phase 1 — Do Now (Weeks)</h3>
+            <ul class="point-list">
+              <li><strong>Healthcare Directive:</strong> Name a trusted son or other person — not spouse</li>
+              <li><strong>Durable POA:</strong> Same trusted person for finances</li>
+              <li><strong>Update beneficiaries:</strong> 401k, IRA, life insurance → to your children</li>
+              <li><strong>Simple Will:</strong> Directs separate property per your wishes</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="col-card neutral">
+            <h3>Phase 2 — After Clarity (Months)</h3>
+            <ul class="point-list">
+              <li><strong>Living Trust:</strong> Once marital status is resolved, properly fund with your assets</li>
+              <li><strong>QDRO planning:</strong> Coordinate retirement account division if divorcing</li>
+              <li><strong>House strategy:</strong> Sale timeline, equity extraction, co-habitation terms if applicable</li>
+              <li><strong>Social Security strategy:</strong> Divorced spouse benefits after 10+ years of marriage — you qualify</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        🎯 <strong>Core principle:</strong> Phase 1 fixes your immediate vulnerability regardless of what you decide about the marriage. Phase 2 locks in your long-term design once you have clarity.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: Section 7 — Before the attorney -->
+  <div class="slide slide-section">
+    <div class="slide-inner">
+      <div class="section-number">7</div>
+      <div class="section-label">Section Seven</div>
+      <h2>Before — and With — <em style="color:var(--gold)">Your Attorney</em></h2>
+      <p class="section-desc">Your employer legal benefit is a real asset. Here's how to maximize it — and what to prepare so you get the most from every billable minute.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: Attorney prep -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-badge">Section 7</div>
+      <div class="slide-label">Preparing for the Consultation</div>
+      <h2 class="slide-heading">Before You Walk In the Door</h2>
+      <div class="two-col">
+        <div>
+          <div class="slide-label" style="margin-bottom:12px;">Gather This Information</div>
+          <ul class="point-list">
+            <li><strong>Asset inventory:</strong> Real estate, retirement accounts, investment accounts, stock/RSUs — rough values, whose name</li>
+            <li><strong>Employment history:</strong> Yours and spouse's, gaps, continuity</li>
+            <li><strong>Separate property:</strong> What you owned before marriage, any inheritances</li>
+            <li><strong>Debts:</strong> Mortgage, any joint liabilities</li>
+            <li><strong>Any existing legal documents:</strong> Even old wills, old beneficiary designations</li>
+            <li><strong>Your priorities:</strong> What matters most — house equity? Retirement security? Clean break? Geographic freedom?</li>
+          </ul>
+        </div>
+        <div>
+          <div class="slide-label" style="margin-bottom:12px;">Questions to Ask Your Attorney</div>
+          <ul class="q-list">
+            <li><strong>"What is my current exposure to my spouse's debts?"</strong></li>
+            <li><strong>"What does legal separation give me vs. divorce?"</strong></li>
+            <li><strong>"Can I divorce and still share the house temporarily?"</strong></li>
+            <li><strong>"What are realistic spousal support scenarios given our history?"</strong></li>
+            <li><strong>"What should I do with beneficiary designations right now, before filing?"</strong></li>
+            <li><strong>"How do we handle retirement accounts — what is a QDRO?"</strong></li>
+          </ul>
+          <div class="info-box" style="margin-top:16px;">
+            💼 <strong>Your employer legal benefit</strong> may cover consultations with estate planning AND family law attorneys. Call HR to confirm scope — many people have this benefit and never use it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18: Next Steps -->
+  <div class="slide slide-final">
+    <div class="slide-inner">
+      <div class="title-ornament" style="margin-bottom:20px;">✦</div>
+      <h2>A <em>Low-Overwhelm</em> Action Plan</h2>
+      <p>You don't have to decide everything at once. Start with what's urgent, then build clarity over time.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:720px; width:100%; text-align:left; margin-bottom:32px;">
+        <div style="background:rgba(201,168,76,0.15); border:1px solid var(--gold); padding:18px 20px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">This Week</div>
+          <p style="color:var(--cream); font-size:14px; line-height:1.7;">Call HR about your employer legal benefit. Confirm it covers estate planning and/or family law. Make the first appointment.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.15); border:1px solid var(--gold); padding:18px 20px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">This Month</div>
+          <p style="color:var(--cream); font-size:14px; line-height:1.7;">Execute healthcare directive, durable POA, and update beneficiary designations. These are your most urgent legal documents.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.15); border:1px solid var(--gold); padding:18px 20px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">This Quarter</div>
+          <p style="color:var(--cream); font-size:14px; line-height:1.7;">Sit with the marriage question. Understand your asset picture. Have the attorney consultation to understand what your options actually look like.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.15); border:1px solid var(--gold); padding:18px 20px;">
+          <div style="color:var(--gold); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">This Year</div>
+          <p style="color:var(--cream); font-size:14px; line-height:1.7;">Make intentional decisions about the marriage and the house. Design Phase 2 of the estate plan with your attorney once you have clarity.</p>
+        </div>
+      </div>
+      <div class="final-tagline">The goal: design your situation rather than inherit the default.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function updateNav() {
+    document.getElementById('slide-counter').textContent = `${current + 1} / ${total}`;
+    document.getElementById('prev-btn').disabled = current === 0;
+    document.getElementById('next-btn').disabled = current === total - 1;
+  }
+
+  function changeSlide(dir) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    slides[current].classList.add('active');
+    updateNav();
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+  });
+
+  updateNav();
+</script>
+</body>
+</html>
