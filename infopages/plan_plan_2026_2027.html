@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Engineering of a Retirement Glide Path: A 2026-2027 Whitepaper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+    <style>
+        :root {
+            --paper-white: #fdfdfd;
+            --ink-black: #1a1a1a;
+            --accent-blue: #2563eb;
+            --sidebar-bg: #f3f4f6;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: #e5e7eb;
+            color: var(--ink-black);
+            font-family: 'Libre+Baskerville', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        #master-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--paper-white);
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 320px;
+            background: var(--sidebar-bg);
+            padding: 60px 30px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            border-right: 1px solid #d1d5db;
+        }
+
+        nav h1 { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; border-bottom: 3px solid var(--ink-black); padding-bottom: 10px; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { margin-bottom: 20px; }
+        nav a { text-decoration: none; color: #4b5563; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; transition: 0.2s; }
+        nav a:hover { color: var(--accent-blue); }
+
+        /* Main Content Area */
+        main {
+            flex-grow: 1;
+            padding: 80px 100px;
+            max-width: 1000px;
+        }
+
+        header { border-bottom: 1px solid #000; margin-bottom: 60px; padding-bottom: 20px; }
+        header h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
+        header .subtitle { font-style: italic; font-size: 1.2rem; color: #4b5563; }
+
+        section { margin-bottom: 80px; text-align: justify; }
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-top: 60px; border-top: 2px solid #000; padding-top: 20px; }
+        h3 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-top: 40px; text-transform: uppercase; color: var(--accent-blue); }
+
+        p { margin-bottom: 1.5rem; }
+
+        .figure { margin: 40px 0; border: 1px solid #d1d5db; padding: 20px; background: #fff; text-align: center; }
+        .figure-caption { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; margin-top: 15px; color: #6b7280; }
+
+        .callout-box { background: #f9fafb; border: 1px solid #000; padding: 30px; margin: 40px 0; font-size: 0.95rem; }
+        .callout-box h4 { margin-top: 0; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; }
+
+        .code { font-family: 'Fira Code', monospace; background: #f3f4f6; padding: 2px 5px; border-radius: 3px; font-size: 0.9rem; }
+
+        /* Custom Drop-downs for Deep Dives */
+        details { border: 1px solid #d1d5db; padding: 20px; margin: 20px 0; background: #fff; }
+        summary { cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.9rem; }
+
+        @media print {
+            nav { display: none; }
+            main { padding: 40px; }
+            #master-container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="master-container">
+    <nav>
+        <h1>Engineering Archive</h1>
+        <ul>
+            <li><a href="#intro">I. Introduction</a></li>
+            <li><a href="#structural">II. Structural Integrity</a></li>
+            <li><a href="#golden-year">III. The 2027 Golden Year</a></li>
+            <li><a href="#waterfall">IV. The Cash Flow Waterfall</a></li>
+            <li><a href="#manual">V. Manual Anchor Design</a></li>
+            <li><a href="#conclusions">VI. Conclusions</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <h1>The Engineering of a Retirement Glide Path</h1>
+            <div class="subtitle">A Narrative Analysis of the 2026-2027 Portfolio Transition Maneuvers</div>
+            <p style="margin-top:20px; font-size:0.9rem; font-family:'Montserrat', sans-serif;">Published May 2026 • Cupertino Technical Review</p>
+        </header>
+
+        <section id="intro">
+            <h2>I. The Dynamics of Transition</h2>
+            <p>For the early retiree, the transition from an accumulation-oriented portfolio to a preservation-and-income model is rarely a linear event. It is more akin to a mid-flight reconfiguration of a complex aircraft. The current stance, as analyzed in the spring of 2026, represents a "holding pattern" defined by a 58/42 asset allocation. This deliberate posture uses the traditional IRA as a high-friction ballast—heavily weighted toward fixed income at 76%—to offset the volatile growth concentration inherent in the taxable accounts.</p>
+            
+            <p>This engineering approach is dictated by the constraints of the 2026 tax window, which has been effectively "filled" by previously realized capital gains. Consequently, the strategy for the remainder of the year is one of structural cleanup and reservoir management, preparing the system for the high-velocity maneuvers scheduled for 2027.</p>
+        </section>
+
+        <section id="structural">
+            <h2>II. Structural Integrity: The 2026 Cleanup</h2>
+            <p>Before the "Golden Year" of 2027 can commence, the portfolio must be stripped of automated complexities that introduce hidden tax leaks or operational drag. This phase, centered in May 2026, focuses on the final exit from Schwab Intelligent Portfolios (SIP). While these automated systems served a purpose during the accumulation phase, their algorithmic rebalancing is counter-productive in a high-tax, manual-optimization environment.</p>
+
+            <p>The cleanup involves two primary mechanical shifts. First, all residual positions within the SIP-managed accounts are liquidated. The resulting cash is not immediately reinvested in long-term growth; instead, it is "swept" into a Treasury Money Market fund (<span class="code">SNSXX</span>). This move serves a dual purpose: it provides liquidity for upcoming tax obligations and ensures that the interest generated is exempt from California's significant state income tax. Second, the "Dividend Valve" is manually toggled across all taxable accounts. By disabling auto-reinvestment, the investor creates a natural, non-taxable cash flow stream that can be directed toward fixed income to bridge the 58/42 stance toward the 60/40 ideal.</p>
+
+            <div class="figure">
+                <div class="mermaid">
+                    graph LR
+                    SIP[SIP Managed Accounts] -->|Liquidate| Cash[Residual Cash]
+                    Cash --> SNSXX[SNSXX Reservoir]
+                    Divs[Taxable Dividends] -->|Manual Valve| SNSXX
+                    style SNSXX fill:#f3f4f6,stroke:#2563eb,stroke-width:2px
+                </div>
+                <div class="figure-caption">Figure 1: The structural flow of the 2026 cleanup phase.</div>
+            </div>
+
+            <p>As illustrated in Figure 1, the logic is one of consolidation. The <span class="code">SNSXX</span> reservoir becomes the primary buffer for the portfolio, managed through a "high-water/low-water" mark system. Excess cash is deployed into intermediate treasuries only when the reservoir exceeds 10% of the total portfolio value.</p>
+        </section>
+
+        <section id="golden-year">
+            <h2>III. The 2027 Golden Year: The Engineering of Headroom</h2>
+            <p>If 2026 is a year of preparation, 2027 is the year of execution. The strategy centers on the convergence of three primary variables: the reset of the tax bracket "runway," the transition of health care coverage, and the mandatory look-back period for Medicare enrollment. The core constraint is the 36% marginal tax rate threshold, which creates an "AGI Income Budget" of approximately $800,000.</p>
+
+            <p>Within this $800,000 budget, several maneuvers compete for capacity. As seen in Figure 2, the primary claim on this headroom is the planned reduction of the GOOG position to a 5% floor. At current market valuations, this sale generates significant Long-Term Capital Gains (LTCG). The remaining capacity—approximately $330,000—is the "discretionary" fuel for Roth conversions.</p>
+
+            <div class="figure">
+                <div class="mermaid">
+                    graph TD
+                    Budget[Total AGI Budget: $800k]
+                    Budget --- GOOG[GOOG LTCG: $420k]
+                    Budget --- Passive[Passive Income: $50k]
+                    Budget --- Roth[Roth Conversion Capacity: $330k]
+                    style Roth fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+                </div>
+                <div class="figure-caption">Figure 2: The 2027 AGI Capacity Map.</div>
+            </div>
+
+            <p>The timing of these conversions is critical due to the "look-back" nature of health care premiums. In June 2027, the transition from COBRA to an ACA-based plan occurs. Because the planned income already blows through the ACA subsidy cliff, there is zero marginal health care cost for additional income. Furthermore, 2027 income determines Medicare premiums for 2029. High income in this "Year 1" look-back period triggers a surcharge for only one member of the household, whereas delaying high-income events to 2028 would trigger double surcharges once both spouses are enrolled. Thus, 2027 is mathematically the "half-price" year for aggressive Roth conversions.</p>
+
+            <div class="callout-box">
+                <h4>Market Sensitivity & The "Greedy Hold"</h4>
+                <p>A central tenet of this plan is resilience to market shocks. If the AI sector undergoes a significant correction in late 2026 or early 2027, the plan adapts. By choosing a "Greedy Hold" on the GOOG position, the investor reclaims the unused LTCG headroom. This newly available capacity is then shifted to <strong>larger Roth conversions</strong>, allowing for a "buy-the-dip" maneuver within a tax-free vehicle.</p>
+            </div>
+        </section>
+
+        <section id="waterfall">
+            <h2>IV. The Cash Flow Waterfall: Generating Liquidity</h2>
+            <p>To support an annual outflow requirement of approximately $400,000—covering living expenses and the significant tax liabilities of the transition maneuvers—the plan utilizes a "Cash Flow Waterfall." This hierarchy is designed to minimize the tax drag associated with selling growth assets while ensuring the cash reservoir is never depleted to a dangerous level.</p>
+
+            <p>As described in Figure 3, the first priority is passive income. Interest from treasuries and dividends from growth funds are redirected to cash. The second priority is the residual cash generated by the May 2026 SIP cleanup. The third and largest contributor in 2027 is the gross proceeds from the GOOG sell-down. By pulling from these sources first, the investor protects the long-term growth shares from being liquidated in a potential market downturn.</p>
+
+            <div class="figure">
+                <div class="mermaid">
+                    graph TD
+                    Need[$400k Annual Need] --> P1[1. Interest & Dividends]
+                    P1 --> P2[2. SIP Exit Residuals]
+                    P2 --> P3[3. SNSXX Reservoir]
+                    P3 --> P4[4. GOOG Strategic Sales]
+                    P4 --> P5[5. High-Basis VTI Lots]
+                    style P1 fill:#eff6ff,stroke:#2563eb
+                    style P2 fill:#eff6ff,stroke:#2563eb
+                    style P3 fill:#eff6ff,stroke:#2563eb
+                    style P4 fill:#dcfce7,stroke:#16a34a
+                </div>
+                <div class="figure-caption">Figure 3: The Liquidity Priority Hierarchy.</div>
+            </div>
+        </section>
+
+        <section id="manual">
+            <h2>V. Manual Anchor Design: The Tax-Optimized Destination</h2>
+            <p>A recurring theme in this transition is the superiority of manual management over all-in-one balanced funds for residents of high-tax states like California. Most "off-the-shelf" 60/40 funds hold corporate bonds, whose interest is subject to California's high ordinary income rates. By contrast, a manually constructed 50/50 taxable portfolio utilizing intermediate treasuries (<span class="code">SCHR</span>) ensures that the fixed-income portion of the "anchor" remains state-tax exempt.</p>
+
+            <p>This manual approach is simplified to a core group of sanctioned tickers. The growth side is held in <span class="code">SCHB</span> (Total US) and <span class="code">VXUS</span> (International), while the fixed-income side is split between treasuries and a significant tilt toward inflation-protected securities (<span class="code">SCHP</span>) to combat potential stagflation. This 50/50 taxable stance is required because the tax-advantaged accounts (IRA and Roth) will eventually transition to 100% growth, requiring the taxable account to provide the ballast necessary to maintain the 60/40 total portfolio target.</p>
+        </section>
+
+        <section id="conclusions">
+            <h2>VI. Conclusions: The Future State</h2>
+            <p>By the conclusion of 2027, the portfolio transition will have achieved its primary objectives. The concentrated risk of GOOG will be reduced to a manageable 5% floor, the tax-free Roth bucket will be substantially larger, and the structural "ticker soup" of automated management will have been replaced by a clean, manual design. The result is a simple, execution-oriented system that is mostly immune to the short-term noise of the market, allowing the retiree to focus on the preservation of capital rather than the constant redesign of the engine.</p>
+        </section>
+
+        <details>
+            <summary>Appendix A: Technical Ticker & IRMAA Reference</summary>
+            <p><strong>Sanctioned Growth:</strong> SCHB (US Market), VXUS (International Developed/Emerging).</p>
+            <p><strong>Sanctioned Fixed:</strong> SCHR (Intermediate Treasuries), SCHP (TIPS), SNSXX (Money Market).</p>
+            <p><strong>Medicare Reference:</strong> <a href="https://www.youtube.com/watch?v=JWr3ty96Qy8" target="_blank">The IRMAA Bracket Guide (External)</a></p>
+        </details>
+    </main>
+</div>
+
+</body>
+</html>

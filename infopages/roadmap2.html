@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Roadmap Part 2: 2027 Precision Maneuvers (v3)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --transition-speed: 0.3s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #deck {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            width: 95%;
+            max-width: 1300px;
+            height: 85%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 60px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            border-top: 6px solid var(--accent-gold);
+            animation: fadeIn var(--transition-speed);
+        }
+
+        .slide.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 1.2rem; color: var(--text-main); border-left: 4px solid var(--accent-gold); padding-left: 15px; }
+        
+        p { font-size: 1.1rem; line-height: 1.5; margin-bottom: 1rem; }
+        ul { list-style: none; margin-bottom: 1rem; }
+        li { font-size: 1rem; margin-bottom: 0.6rem; position: relative; padding-left: 25px; line-height: 1.4; }
+        li::before { content: "▪"; position: absolute; left: 0; color: var(--accent-gold); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 10px; }
+        .box { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+        .box h3 { font-size: 1rem; color: var(--accent-gold); margin-bottom: 10px; text-transform: uppercase; }
+
+        .highlight { color: var(--accent-gold); font-weight: bold; }
+        .dim { color: var(--text-dim); font-size: 0.9rem; }
+        
+        .video-box { background: #000; border: 2px solid var(--accent-gold); padding: 30px; text-align: center; border-radius: 12px; margin-top: 10px; }
+        .video-link { color: var(--accent-gold); text-decoration: none; font-size: 1.3rem; font-weight: bold; }
+
+        #controls { padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; background: #0f172a; border-top: 1px solid #1e293b; }
+        .nav-btn { background: var(--accent-gold); border: none; padding: 10px 20px; color: #000; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; }
+        .nav-btn:disabled { background: #475569; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<div id="deck">
+    <div class="slide active">
+        <h1>2027: Precision & Timing</h1>
+        <p>Aligning the <span class="highlight">$400k Cash Flow</span> needs with the <span class="highlight">Manual Taxable Rebalance</span>.</p>
+        <div class="grid">
+            <div class="box">
+                <h3>Current Status (May 2026)</h3>
+                <ul>
+                    <li>Portfolio Overall: 58/42</li>
+                    <li><span class="highlight">Immediate:</span> Exit all SIP accounts.</li>
+                    <li><span class="highlight">Immediate:</span> Turn off dividend reinvestment.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>The 2027 "Golden Year"</h3>
+                <ul>
+                    <li>GOOG concentration targeting ~5%.</li>
+                    <li>COBRA → ACA transition (June 2027).</li>
+                    <li>Maximizing the $800k AGI "Budget" window.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>The $800k AGI "Income Budget"</h2>
+        <p>A finite capacity shared by your GOOG gains and your Roth conversion goals.</p>
+        <div class="box" style="text-align: center; margin-bottom: 15px;">
+            <p style="font-size: 1.4rem;">AGI Capacity ≈ <span class="highlight">$800,000</span></p>
+            <p class="dim">Threshold for the 37% Federal bracket + hidden CA phase-outs.</p>
+        </div>
+        <div class="grid">
+            <div class="box">
+                <h3>Fixed/Planned Income</h3>
+                <ul>
+                    <li><strong>$50k:</strong> Estimated Interest/Dividends.</li>
+                    <li><strong>$420k:</strong> Estimated LTCG (Selling $500k GOOG).</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Discretionary Capacity</h3>
+                <ul>
+                    <li><strong>$330k Remaining:</strong> Used for Roth Conversions.</li>
+                    <li><span class="highlight">Market Sensitivity:</span> If GOOG drops, LTCG drops, allowing for an even <span class="highlight">larger</span> Roth conversion.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Healthcare: The 2027 Pivot</h2>
+        <p>Coordinating the June 2027 transition to ACA while navigating Medicare look-backs.</p>
+        <div class="grid">
+            <div class="box">
+                <h3>June 2027: COBRA Ends</h3>
+                <ul>
+                    <li>Transition to ACA coverage mid-year.</li>
+                    <li>AGI ($800k) blows through the ACA subsidy cliff.</li>
+                    <li>Full-price premiums mean additional income has <span class="highlight">Zero Marginal Cost</span> to your health care price.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Medicare Look-Back</h3>
+                <ul>
+                    <li>2027 income sets Bill's 2029 premiums.</li>
+                    <li>2027 triggers <strong>one</strong> person's surcharge.</li>
+                    <li>2028 income would trigger surcharges for <strong>both</strong>, doubling the cost.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="video-box">
+            <a href="https://www.youtube.com/watch?v=JWr3ty96Qy8" target="_blank" class="video-link">▶ Visual Guide: Medicare IRMAA Brackets</a>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>SNSXX: Deployment vs. Spending</h2>
+        <p>Treating your cash as a "Refilling Reservoir" rather than a one-time seed.</p>
+        <div class="box">
+            <h3>The High-Water/Low-Water Logic</h3>
+            <ul>
+                <li><strong>The Target:</strong> Maintain ~5-10% of total portfolio in SNSXX.</li>
+                <li><strong>Deployment:</strong> Move SNSXX into <span class="code">SCHR/SCHB</span> only when it exceeds 10%.</li>
+                <li><strong>Spending:</strong> Use SNSXX as the primary source for your $400k annual outflow.</li>
+                <li><strong>Refill:</strong> Use the $500k GOOG proceeds in 2027 to "top off" the reservoir first.</li>
+            </ul>
+        </div>
+        <p class="dim" style="margin-top: 15px;">This aligns your "Cash Flow" needs with your "Manual Rebalance" goals without contradictory trades.</p>
+    </div>
+
+    <div class="slide">
+        <h2>The $400k Cash Flow Waterfall</h2>
+        <p>Where to pull the funds for life expenses and tax payments each year.</p>
+        <div class="grid">
+            <div class="box">
+                <h3>Priority 1: The "Low-Hanging Fruit"</h3>
+                <ul>
+                    <li><strong>Dividends/Interest:</strong> (~$50k).</li>
+                    <li><strong>SIP Exit Cash:</strong> Residuals from May 2026 cleanup.</li>
+                    <li><strong>Existing SNSXX:</strong> Draw from your current "Large" cash buffer.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Priority 2: Strategic Sales</h3>
+                <ul>
+                    <li><strong>2027 GOOG Proceeds:</strong> ($500k Gross).</li>
+                    <li><strong>High-Basis Lots:</strong> If extra cash is needed, sell growth lots with the <span class="highlight">smallest gains</span>.</li>
+                    <li>Keep the "Greedy Hold" on GOOG if the price drops; pivot to more Roth.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>The Manual Taxable Rebalance</h2>
+        <p>Optimizing for California state-tax efficiency while hitting a total 60/40 target.</p>
+        <div class="grid">
+            <div class="box">
+                <h3>Why Manual 50/50?</h3>
+                <ul>
+                    <li>IRA/Roth will be 100% Growth.</li>
+                    <li>Therefore, Taxable must be ~50% Fixed to hit 60/40 overall.</li>
+                    <li>Manual Treasuries (<span class="code">SCHR</span>) are <span class="highlight">CA State Tax Exempt</span>.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>Reinvestment Logic</h3>
+                <ul>
+                    <li>Deploy "Excess" SNSXX into <span class="code">SCHR</span>.</li>
+                    <li>DCA into the position over 6 months to hedge rate spikes.</li>
+                    <li>If the market corrects, use the cash to buy <span class="highlight">SCHB/VXUS</span> instead (Buy the Dip).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Revised Execution Checklist</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Action Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="highlight">May 2026</span></td>
+                    <td>Exit SIP; Stop auto-reinvestments; Sweep cash to SNSXX.</td>
+                </tr>
+                <tr>
+                    <td><span class="highlight">2026 H2</span></td>
+                    <td>Draw $400k spending from SIP cash + SNSXX. DCA excess into Treasuries.</td>
+                </tr>
+                <tr>
+                    <td><span class="highlight">Jan 2027</span></td>
+                    <td>AGI Budget Resets. Monitor GOOG ($500k target sale).</td>
+                </tr>
+                <tr>
+                    <td><span class="highlight">Jun 2027</span></td>
+                    <td>Switch to full-price ACA coverage.</td>
+                </tr>
+                <tr>
+                    <td><span class="highlight">Nov 2027</span></td>
+                    <td>Fill the $800k AGI budget with Roth Conversions.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="controls">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+    <div id="counter">Slide 1 of 7</div>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateCounter() {
+        counter.innerText = `Slide ${currentSlide + 1} of ${slides.length}`;
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    function changeSlide(direction) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide += direction;
+        slides[currentSlide].classList.add('active');
+        updateCounter();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    updateCounter();
+</script>
+
+</body>
+</html>
