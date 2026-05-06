@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Transition Roadmap: Bill & Freda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-gold: #f59e0b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --transition-speed: 0.4s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Slide Container */
+        #deck {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 60px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 8px solid var(--accent-gold);
+            animation: fadeIn var(--transition-speed);
+        }
+
+        .slide.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        p { font-size: 1.4rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--text-main); }
+        
+        ul { list-style: none; margin-left: 20px; }
+        li {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .highlight { color: var(--accent-gold); font-weight: bold; }
+        .code { font-family: 'Roboto Mono', monospace; background: #0f172a; padding: 4px 8px; border-radius: 4px; font-size: 1.1rem; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        th { text-align: left; padding: 12px; border-bottom: 2px solid var(--accent-gold); color: var(--text-dim); text-transform: uppercase; }
+        td { padding: 12px; border-bottom: 1px solid #334155; }
+
+        /* Navigation */
+        #controls {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            border-top: 1px solid #1e293b;
+        }
+
+        .nav-btn {
+            background: var(--accent-gold);
+            border: none;
+            padding: 12px 24px;
+            color: #000;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover { background: #fbbf24; transform: scale(1.05); }
+        .nav-btn:disabled { background: #475569; cursor: not-allowed; }
+
+        #counter { font-family: 'Roboto Mono', monospace; color: var(--text-dim); font-size: 1.1rem; }
+
+        /* Scenarios */
+        .scenario-box {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="deck">
+    <div class="slide active">
+        <h1>Portfolio Transition Roadmap</h1>
+        <p>A Strategic Guide for <span class="highlight">Bill & Freda</span></p>
+        <p style="color: var(--text-dim);">Goal: Transition to a 60/40 target while navigating GOOG concentration, tax limits, and stagflation risks.</p>
+        <p style="font-size: 1rem; margin-top: 2rem;">May 2026 Update • Based on Advisor Guidance</p>
+    </div>
+
+    <div class="slide">
+        <h2>The "Ballast" Strategy</h2>
+        <ul>
+            <li><span class="highlight">The Goal:</span> Reach 60/40 (Equity/Fixed) for a simple, low-maintenance financial life.</li>
+            <li><span class="highlight">The Problem:</span> Tax constraints prevent selling all GOOG at once; current overall is ~69/31.</li>
+            <li><span class="highlight">The Solution:</span> Use the <span class="highlight">Traditional IRA</span> as a temporary ballast (holding 75% Fixed Income) to offset high equity in taxable.</li>
+            <li><span class="highlight">Outcome:</span> Portfolio risk is managed <i>immediately</i>, even while GOOG sells down slowly.</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Immediate "Quick Wins"</h2>
+        <p>Actions that can be executed now with zero tax consequences:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Detail</th>
+                    <th>Why?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Optimize Cash</td>
+                    <td>Move SWVXX to <span class="code">SNSXX</span> (Taxable)</td>
+                    <td>CA State Tax Exemption</td>
+                </tr>
+                <tr>
+                    <td>Cleanup</td>
+                    <td>Sell Corporate Bonds (Taxable)</td>
+                    <td>Sanctioned simplification</td>
+                </tr>
+                <tr>
+                    <td>Consolidate</td>
+                    <td>Exit Schwab Intelligent Portfolio</td>
+                    <td>Reduce "Ticker Soup" in IRA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="slide">
+        <h2>IRA: The 25/75 Lean Ballast</h2>
+        <p>A simplified, 4-ticker portfolio designed to counter-balance your taxable accounts.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Asset Class</th>
+                    <th>% Allocation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="code">SCHR</span></td>
+                    <td>Intermediate-Term Treasuries</td>
+                    <td class="highlight">50%</td>
+                </tr>
+                <tr>
+                    <td><span class="code">SCHP</span></td>
+                    <td>TIPS (Inflation Protected)</td>
+                    <td class="highlight">25%</td>
+                </tr>
+                <tr>
+                    <td><span class="code">VTI</span></td>
+                    <td>Total US Stock (Keep Existing)</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td><span class="code">VXUS</span></td>
+                    <td>Total Intl Stock (Keep Existing)</td>
+                    <td>10%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="slide">
+        <h2>Defense Against Stagflation</h2>
+        <p>Why we tilted the IRA further toward TIPS and International:</p>
+        <div class="scenario-box">
+            <p><span class="highlight">TIPS (SCHP):</span> Unlike regular bonds, these adjust with the CPI. If inflation stays "sticky" at 3%+, your principal is protected.</p>
+            <p><span class="highlight">Intl (VXUS):</span> A hedge against a stalling US economy. If the US market corrects or the Dollar weakens, international diversification provides the offset.</p>
+        </div>
+        <p style="margin-top: 20px;">Duration Note: <span class="code">SCHR</span> has a ~5-year duration. Holding through 2031 effectively "guarantees" the yield regardless of rate volatility.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Taxable Management</h2>
+        <ul>
+            <li><span class="highlight">Status:</span> 2026 LTCG Limit is reached. No further GOOG sales this year.</li>
+            <li><span class="highlight">Next Move:</span> Deploy existing <span class="code">SNSXX</span> cash into "All-in-one" 60/40 funds.</li>
+            <li><span class="highlight">Target Fund:</span> Look for sanctioned options like Schwab Balanced (<span class="code">SWOBX</span>) or similar Vanguard low-cost equivalents.</li>
+            <li>This shift begins adding equity back into taxable in a controlled, diversified way.</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>2027: The $75k Conversion</h2>
+        <p>A strategic move to accelerate tax-free growth:</p>
+        <div class="scenario-box">
+            <p><strong>1. The Sell:</strong> Sell $75k of <span class="code">SCHR</span> or <span class="code">SCHP</span> (Bonds) in the Traditional IRA.</p>
+            <p><strong>2. The Move:</strong> Convert to Roth IRA.</p>
+            <p><strong>3. The Buy:</strong> Purchase <span class="highlight">Growth/Equity</span> (VTI/VXUS) in the Roth.</p>
+            <p><strong>4. The Tax:</strong> Pay the ~36% tax from taxable cash (SNSXX), NOT from the conversion itself.</p>
+        </div>
+        <p>This "Asset Location" flip puts your highest growth assets in the tax-free bucket.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Future State: 60/40 Simplicity</h2>
+        <p>When the transition is complete:</p>
+        <ul>
+            <li><span class="highlight">Taxable:</span> Holds 60/40 funds + remaining GOOG (at 5% cap) + Treasuries.</li>
+            <li><span class="highlight">Roth:</span> 100% Growth (Zero taxes forever).</li>
+            <li><span class="highlight">IRA:</span> Transitioned from "Ballast" to Growth over time.</li>
+            <li><span class="highlight">Life:</span> Execution-only. No more design decisions required.</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Summary: Your To-Do List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timeframe</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>This Week</td>
+                    <td>Execute IRA rebalance (25% Growth / 75% Fixed)</td>
+                </tr>
+                <tr>
+                    <td>This Month</td>
+                    <td>Sweep SNSXX cash in taxable into 60/40 funds</td>
+                </tr>
+                <tr>
+                    <td>Jan 2027</td>
+                    <td>Resume GOOG sell-down (targeting 5% floor)</td>
+                </tr>
+                <tr>
+                    <td>2027 Q1</td>
+                    <td>Execute $75k Roth Conversion from IRA bonds</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="controls">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+    <div id="counter">Slide 1 of 9</div>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateCounter() {
+        counter.innerText = `Slide ${currentSlide + 1} of ${slides.length}`;
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    function changeSlide(direction) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide += direction;
+        
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+        
+        slides[currentSlide].classList.add('active');
+        updateCounter();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    updateCounter();
+</script>
+
+</body>
+</html>
